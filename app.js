@@ -10,8 +10,6 @@ const express       = require('express'),
 
 const app = express();
 
-// import db connection
-require('./db/mongo');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

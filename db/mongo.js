@@ -13,9 +13,10 @@ db.on("error", error => {
   console.log("Mongoose Error: ", error);
 });
 
-// Once logged in to the db through mongoose, log a success message
+// Once logged in to the models through mongoose, log a success message
 db.once("open", () => {
   console.log("Mongoose connection successful.");
 });
+
 
 module.exports = db;

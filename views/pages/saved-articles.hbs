@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="col-ms-12">
+		<div class="saved">
+			<hr>
+			<lu class="list-unstyled">
+				{{# if body }}
+					{{# each body}}
+						{{# if this.title }}
+							<li>
+								<div class="clearfix">
+									<h3 class="category">{{this.category}}</h3>
+									<h4 class="title">{{ this.title }}</h4>
+									<a href="{{ this.link }}">{{ this.link }}</a>
+
+									<form class="form-inline" action="/delete?_method=DELETE" method="POST">
+										<input type="hidden" name="_id" value="{{ this._id }}"/>
+										<button class="btn btn-danger pull-right" type="submit">Delete from Saved</button>
+									</form>
+
+									<form class="form-inline" action="/note" method="GET">
+										<input type="hidden" name="_id" value="{{ this._id }}"/>
+										<button class="btn btn-info pull-right" type="submit">Article Notes</button>
+									</form>
+
+								</div>
+							</li>
+							<hr>
+						{{/if}}
+					{{/each}}
+				{{/if}}
+			</lu>
+		</div>
+	</div>
+</div>

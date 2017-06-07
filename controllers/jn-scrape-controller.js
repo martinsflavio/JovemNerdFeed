@@ -7,14 +7,21 @@ const request   = require('request'),
 const JovemNerdScrap = {
     scrape: function(cb) {
       request("https://jovemnerd.com.br/", (error, response, html) => {
-        let $ = cheerio.load(html);
+        const $ = cheerio.load(html);
+        const content = $('#content');
+        const articlesWrap = content.find('.entry-card__content');
+
         let articleList = [];
 
-        $("article h2").each(function (i, element) {
+        articlesWrap.each(function (i, element) {
+
           let result = {};
-          result.title = $(this).children("a").text();
-          result.link = $(this).children("a").attr("href");
+          result.category = $(this).children("h3").find('a').text();
+          result.title    = $(this).children("h2").text();
+          result.link     = $(this).children('h2').find('a').attr('href');
           articleList.push(result);
+
+
         });
 
        cb(articleList);

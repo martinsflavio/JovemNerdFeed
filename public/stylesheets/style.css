@@ -1,3 +1,4 @@
+body {background-color: #1e1e22;}
 
 .navbar-header {
   color: darkcyan;
@@ -9,9 +10,24 @@ a:hover {
 }
 
 #capa {
-  background-color: dimgrey;
+  background-color: transparent;
   padding: 100px;
+}
+.container {padding-bottom: 50px; }
+
+.footer{
+  width:100%;
+  background-color: dimgrey;
+  height:50px;
 }
 
 
+.category {
+  color: #cd2323;
+  font-weight: bold;
+}
 
+.title {
+  color: #f0f0fa;
+  font-weight: 800;
+}

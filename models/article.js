@@ -7,6 +7,9 @@ let ArticleSchema, Article;
 
 
 ArticleSchema = new Schema({
+  category: {
+    type: String
+  },
   title: {
     type: String,
     required: true,

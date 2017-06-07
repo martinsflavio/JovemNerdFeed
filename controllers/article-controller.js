@@ -15,7 +15,7 @@ module.exports = {
   findById: function() {
 
   },
-  addNew: function(articlesObj, cb) {
+  add: function(articlesObj, cb) {
     let entry = new Article(articlesObj);
 
     entry.save((err, savedDoc) => {

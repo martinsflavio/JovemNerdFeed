@@ -13,34 +13,62 @@ router.get('/', (req, res, next) => {
 
 /* GET scrape. */
 router.get('/scrape', (req, res, next) => {
-  let totalNewArticles = 0;
 
-  JNScrap.scrape( jovemNerdArticles =>{
+  JNScrap.scrape( articles =>{
+    res.render('./pages/scrapes',{body:articles});
+  });
 
-    console.log(jovemNerdArticles);
+
+});
+///////////////////////////////////////////////////
+
+/* GET Save Article. */
+router.post('/save', (req, res, next) => {
+  //TODO VALIDATE OBJ BEFORE SAVE INTO DB
+
+  Article.add(req.body, (err,savedArticle) => {
+    if (err) {
+      if(err.code === 11000) {
+        console.log('Article saved already!');
+      } else {
+        res.render('error',err);
+      }
+    } else {
+      console.log(savedArticle);
+    }
 
   });
 });
 ///////////////////////////////////////////////////
 
 /* GET list all Articles. */
-router.get('/articles/all', (req, res, next) => {
-  console.log('all');
+router.get('/all', (req, res, next) => {
 
   Article.findArticles({},(err, articles) => {
 
     if (err) {
       res.render('error',err);
     } else {
-      let response = {
-        title   :'Jovem Nerd Scraper',
-        message : 'All Articles',
-        body    : articles
-      };
-      res.render('index', response);
+      res.render('./pages/saved-articles', {body:articles});
     }
 
-  })
+  });
+
+});
+///////////////////////////////////////////////////
+
+/* DELETE  Article. */
+router.delete('/delete', (req, res, next) => {
+
+  Article.destroy(req.body._id, (err, deletedArticle) => {
+    if (err) {
+      res.render('error',err);
+    } else {
+      res.redirect('/all');
+      console.log(deletedArticle);
+    }
+
+  });
 
 });
 ///////////////////////////////////////////////////

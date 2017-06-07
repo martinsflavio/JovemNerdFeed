@@ -6,17 +6,19 @@ const request   = require('request'),
 
 const JovemNerdScrap = {
     scrape: function(cb) {
-      request("https://jovemnerd.com.br/nerdnews/", (error, response, html) => {
+      request("https://jovemnerd.com.br/", (error, response, html) => {
         let $ = cheerio.load(html);
-        let artList = [];
+        let articleList = [];
 
         $("article h2").each(function (i, element) {
           let result = {};
           result.title = $(this).children("a").text();
           result.link = $(this).children("a").attr("href");
-          artList.push(result);
+          articleList.push(result);
         });
-        cb(artList);
+
+       cb(articleList);
+
       });
     }
 };

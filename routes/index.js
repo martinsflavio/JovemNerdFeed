@@ -9,35 +9,39 @@ const JNScrap = require('../controllers/jn-scrape-controller'),
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'Jovem Nerd Scraper' });
 });
+///////////////////////////////////////////////////
 
-
+/* GET scrape. */
 router.get('/scrape', (req, res, next) => {
-  JNScrap.scrape( result =>{
-    result.forEach(articleToSave => {
-      Article.add(articleToSave, savedArticle => {
-        console.log(savedArticle);
-        console.log('----------');
-      });
-    });
+  let totalNewArticles = 0;
 
+  JNScrap.scrape( jovemNerdArticles =>{
 
-    let response = {
-      title   :'Jovem Nerd Scraper',
-      message : 'Scrape Complete!',
-      body    : result
-    };
+    console.log(jovemNerdArticles);
 
-    res.render('index', response);
   });
 });
+///////////////////////////////////////////////////
 
-
+/* GET list all Articles. */
 router.get('/articles/all', (req, res, next) => {
-  Article.find({},(err, articles) => {
-    if (err) {res.render('err',err);}
+  console.log('all');
 
-    console.log(articles);
+  Article.findArticles({},(err, articles) => {
+
+    if (err) {
+      res.render('error',err);
+    } else {
+      let response = {
+        title   :'Jovem Nerd Scraper',
+        message : 'All Articles',
+        body    : articles
+      };
+      res.render('index', response);
+    }
+
   })
-});
 
+});
+///////////////////////////////////////////////////
 module.exports = router;

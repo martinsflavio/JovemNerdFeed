@@ -1,31 +1,37 @@
 'use strict';
 
-const Article = require('../models/article'),
-      db      = require('../db/mongo');
+const Article = require('../models/article');
 
 module.exports = {
-  find: function(queryObj, cb) {
-    db.Article.find(queryObj,(err,articles) => {
-      if (err) {return cb(err);}
-      return cb(articles);
+  findArticles: function(queryObj, cb) {
+
+    Article.find(queryObj,(err, doc) => {
+      if (err) {return cb(err,false);}
+
+        return cb(null, doc);
     });
+
   },
   findById: function() {
 
   },
-  add: function(articlesObj, cb) {
+  addNew: function(articlesObj, cb) {
     let entry = new Article(articlesObj);
 
-    entry.save((err, doc) => {
-      if (err) {return cb(err);}
-
-      cb(doc);
+    entry.save((err, savedDoc) => {
+      if (err) {
+        return cb(err, false);
+      }
+      cb(null, savedDoc);
     });
   },
   update: function() {
 
   },
-  destroy: function() {
-
+  destroy: function(id, cb) {
+    Article.findByIdAndRemove({ _id: id }, (err, doc) => {
+      if (err) {return cb(err, false);}
+      return cb(null,doc);
+    });
   }
 };

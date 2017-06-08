@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+		<!-- Normalize file -->
+		<link rel='stylesheet' href='/stylesheets/normalize.css' />
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  </head>
+
+  <body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a href="/">
+						<h3>Jovem Nerd Scraper</h3>
+					</a>
+				</div>
+				<div class="clearfix">
+					<ul class="nav navbar-nav">
+						<li><a href="/">Home</a></li>
+						<li><a href="/all">Saved Articles</a></li>
+					</ul>
+					<a href="/scrape">
+						<button type="button" class="btn btn-danger navbar-btn">SCRAPE NEW ARTICLES!</button>
+					</a>
+				</div>
+			</div>
+		</nav>
+		<div id="capa" class="jumbotron">
+			<div class="container text-center">
+				<img src="/images/capa.svg" alt="jn-logo">
+			</div>
+		</div>
+
+		<div class="container">
+			{{{body}}}
+		</div>
+
+
+		<footer class="footer text-center">
+			<p>Jovem Nerd Scraper</p>
+		</footer>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>

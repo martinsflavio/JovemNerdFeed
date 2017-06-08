@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="scrapes">
+			<hr>
+			<lu class="list-unstyled">
+				{{# if body }}
+					{{# each body}}
+							{{# if this.title }}
+								<li>
+									<div class="clearfix">
+										<h3 class="category">{{this.category}}</h3>
+										<h4 class="title">{{ this.title }}</h4>
+										<a href="{{ this.link }}">{{ this.link }}</a>
+										<form class="form-inline" action="/save" method="POST">
+											<input type="hidden" name="category" value="{{ this.category }}"/>
+											<input type="hidden" name="title" value="{{ this.title }}"/>
+											<input type="hidden" name="link" value="{{ this.link }}"/>
+											<button class="btn btn-success pull-right" type="submit">Save</button>
+										</form>
+									</div>
+								</li>
+								<hr>
+							{{/if}}
+					{{/each}}
+				{{/if}}
+			</lu>
+		</div>
+	</div>
+</div>

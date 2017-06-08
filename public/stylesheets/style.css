@@ -1,8 +1,33 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body {background-color: #1e1e22;}
+
+.navbar-header {
+  color: darkcyan;
+  padding-right: 50px;
 }
 
-a {
-  color: #00B7FF;
+a:hover {
+  text-decoration:none;
+}
+
+#capa {
+  background-color: transparent;
+  padding: 100px;
+}
+.container {padding-bottom: 50px; }
+
+.footer{
+  width:100%;
+  background-color: dimgrey;
+  height:50px;
+}
+
+
+.category {
+  color: #cd2323;
+  font-weight: bold;
+}
+
+.title {
+  color: #f0f0fa;
+  font-weight: 800;
 }

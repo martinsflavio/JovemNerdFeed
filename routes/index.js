@@ -22,7 +22,7 @@ router.get('/scrape', (req, res, next) => {
 });
 ///////////////////////////////////////////////////
 
-/* GET Save Article. */
+/* GET save article. */
 router.post('/save', (req, res, next) => {
   //TODO VALIDATE OBJ BEFORE SAVE INTO DB
 
@@ -41,7 +41,7 @@ router.post('/save', (req, res, next) => {
 });
 ///////////////////////////////////////////////////
 
-/* GET list all Articles. */
+/* GET list saved articles. */
 router.get('/all', (req, res, next) => {
 
   Article.findArticles({},(err, articles) => {
@@ -57,7 +57,7 @@ router.get('/all', (req, res, next) => {
 });
 ///////////////////////////////////////////////////
 
-/* DELETE  Article. */
+/* DELETE delete article. */
 router.delete('/delete', (req, res, next) => {
 
   Article.destroy(req.body._id, (err, deletedArticle) => {
@@ -72,4 +72,7 @@ router.delete('/delete', (req, res, next) => {
 
 });
 ///////////////////////////////////////////////////
+
+
+
 module.exports = router;

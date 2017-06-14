@@ -1,0 +1,25 @@
+<div xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+	{{# if success }}
+		{{# each success}}
+			{{# if this.title }}
+				<li>
+					<div class="clearfix">
+						<h3 class="category">{{this.category}}</h3>
+						<a href="{{ this.link }}">
+							<h4 class="title">{{ this.title }}</h4>
+						</a>
+						<hr>
+						{{#each notes}}
+							<p>{{this.body}}</p>
+							<form class="form-inline" action="/notes/delete?_method=DELETE" method="POST">
+								<input type="hidden" name="_id" value="{{ this._id }}"/>
+								<button class="btn btn-danger pull-right" type="submit">X</button>
+							</form>
+						{{/each}}
+					</div>
+				</li>
+				<hr>
+			{{/if}}
+		{{/each}}
+	{{/if}}
+</div>

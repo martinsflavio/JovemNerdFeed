@@ -3,8 +3,8 @@
 		<div class="saved">
 			<hr>
 			<lu class="list-unstyled">
-				{{# if result }}
-					{{# each ressul}}
+				{{# if success }}
+					{{# each success}}
 						{{# if this.title }}
 							<li>
 								<div class="clearfix">
@@ -13,15 +13,65 @@
 										<h4 class="title">{{ this.title }}</h4>
 									</a>
 
-									<form class="form-inline" action="/delete?_method=DELETE" method="POST">
+									<form class="form-inline" action="/articles/delete?_method=DELETE" method="POST">
 										<input type="hidden" name="_id" value="{{ this._id }}"/>
 										<button class="btn btn-danger pull-right" type="submit">Delete from Saved</button>
 									</form>
 
-									<form class="form-inline" action="/notes/all" method="GET">
-										<input type="hidden" name="_id" value="{{ this._id }}"/>
-										<button class="btn btn-info pull-right" type="submit">Article Notes</button>
-									</form>
+									<!-- Trigger the modal with a button -->
+									<button  class="btn btn-info pull-right" type="submit" data-toggle="modal" data-target="#{{this._id}}">Article Notes</button>
+
+									<div class="article-modal">
+										<div class="container">
+											<!-- Modal -->
+											<div class="modal fade" id="{{this._id}}" role="dialog">
+												<div class="modal-dialog">
+
+													<!-- Modal content-->
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+															<h3 class="modal-title text-center">Notes</h3>
+														</div>
+														<div class="modal-body">
+															<div class="row">
+																<div class="col-sm-12">
+																	<div class="row">
+																		<div class="col-sm-12">
+																			{{#each notes}}
+																				<div class="clearfix">
+																					<div class="pull-rigth">
+																						<form class="form-inline" action="/notes/delete?_method=DELETE" method="POST">
+																							<input type="hidden" name="_id" value="{{ this._id }}"/>
+																							<button class="btn btn-danger pull-right" type="submit">&times;</button>
+																						</form>
+																					</div>
+																					<div class="pull-left">
+																						<h4>{{this.body}}</h4>
+																					</div>
+																				</div>
+																				<hr>
+																			{{/each}}
+																		</div>
+																	</div>
+																	<hr>
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<form class="form-horizontal" action="/notes/create" method="POST">
+																				<input type="hidden" name="articleId" value="{{ this._id }}"/>
+																				<textarea placeholder="new note" class="form-control" rows="2" name="body"></textarea>
+																				<button type="submit" class="btn btn-success">add</button>
+																			</form>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 
 								</div>
 							</li>

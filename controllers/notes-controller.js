@@ -39,7 +39,7 @@ module.exports = {
     });
   },
   destroy (query, cb) {
-    Notes.findByIdAndRemove(query, (err, docs) => {
+    Notes.findByIdAndRemove({_id:query._id}, (err, docs) => {
       this.errorHandler(err,docs, cb);
     })
   },

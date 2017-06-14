@@ -5,12 +5,12 @@ const Articles = require('../models/articlesModel');
 
 module.exports = {
   find (query, cb) {
-    Articles.find(query, (err, docs) => {
+    Articles.find(query).populate('notes').exec((err, docs) => {
       this.errorHandler(err,docs, cb);
     })
   },
   findById (query, cb) {
-    Articles.findById(query, (err, docs) => {
+    Articles.findById(query).populate('notes').exec((err, docs) => {
       this.errorHandler(err,docs, cb);
     })
   },
@@ -27,7 +27,8 @@ module.exports = {
     })
   },
   destroy (query, cb) {
-    Articles.findByIdAndRemove(query, (err, docs) => {
+
+    Articles.findByIdAndRemove({_id: query}, (err, docs) => {
       this.errorHandler(err,docs, cb);
     })
   },

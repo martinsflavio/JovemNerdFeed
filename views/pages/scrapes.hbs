@@ -3,8 +3,8 @@
 		<div class="scrapes">
 			<hr>
 			<lu class="list-unstyled">
-				{{# if body }}
-					{{# each body}}
+				{{# if success }}
+					{{# each success}}
 							{{# if this.title }}
 								<li>
 									<div class="clearfix">
@@ -12,7 +12,7 @@
 										<a href="{{ this.link }}">
 											<h4 class="title">{{ this.title }}</h4>
 										</a>
-										<form class="form-inline" action="/api/articles/create" method="POST">
+										<form class="form-inline" action="/articles/create" method="POST">
 											<input type="hidden" name="category" value="{{ this.category }}"/>
 											<input type="hidden" name="title" value="{{ this.title }}"/>
 											<input type="hidden" name="link" value="{{ this.link }}"/>

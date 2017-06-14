@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
 router.get('/scrape', (req, res, next) => {
 
   JNScraper.scrape( articles =>{
-    res.render('./pages/scrapes',{body:articles});
+    res.render('./pages/scrapes',{success: articles});
   });
 
 });
